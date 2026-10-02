@@ -12,10 +12,14 @@ permissions:
   contents: read
 
 env:
-  AWS_REGION: ${{ vars.AWS_REGION }}
-  EKS_CLUSTER_NAME: ${{ vars.EKS_CLUSTER_NAME }}
-  ECR_REPO: ${{ vars.FRONTEND_ECR_REPO }}
-  REACT_APP_MOVIE_API_URL: ${{ vars.BACKEND_API_URL }}
+  # AWS_REGION: ${{ vars.AWS_REGION }}
+  # EKS_CLUSTER_NAME: ${{ vars.EKS_CLUSTER_NAME }}
+  # ECR_REPO: ${{ vars.FRONTEND_ECR_REPO }}
+  # REACT_APP_MOVIE_API_URL: ${{ vars.BACKEND_API_URL }}
+  AWS_REGION: us-east-1
+  EKS_CLUSTER_NAME: cluster
+  ECR_REPO: frontend
+  REACT_APP_MOVIE_API_URL: http://localhost:5000
 
 jobs:
   lint:
