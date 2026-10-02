@@ -8,3 +8,13 @@ credentials
 
 *.tfstate
 *.tfstate.*
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+
+.terraform/
+.terraform.lock.hcl
