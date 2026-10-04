@@ -137,6 +137,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Log in to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
       - name: Configure kubectl
         run: |
           aws eks update-kubeconfig \
@@ -145,9 +149,11 @@ jobs:
 
       - name: Update backend image
         working-directory: starter/backend/k8s
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
           kustomize edit set image \
-            backend="$ECR_REPO:${{ github.sha }}"
+            backend="$REGISTRY/$ECR_REPO:${{ github.sha }}"
 
       - name: Deploy backend
         working-directory: starter/backend/k8s
