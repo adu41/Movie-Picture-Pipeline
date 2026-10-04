@@ -119,9 +119,9 @@ jobs:
             ./starter/frontend
           docker push $REGISTRY/$ECR_REPO:$IMAGE_TAG
 
-      - name: Push Docker image
-        run: |
-          docker push "$ECR_REPO:${{ github.sha }}"
+      # - name: Push Docker image
+      #   run: |
+      #     docker push "$ECR_REPO:${{ github.sha }}"
 
   deploy:
     name: Deploy Frontend
